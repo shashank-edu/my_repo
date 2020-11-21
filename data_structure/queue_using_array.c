@@ -65,8 +65,8 @@ int choice,value;
 struct queue  sp;
 sp.size=10;
 sp.array=(int * )malloc(sp.size *sizeof(int));
-sp.front_index=-1;
-sp.back_index=-1;
+sp.front_index=0;
+sp.back_index=0;
 while(1)
 {
 printf("please select your choice \n");
