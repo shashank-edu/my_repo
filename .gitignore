@@ -1,6 +1,5 @@
 /mylogs.log
 *.log
-program/
 *.swp
 *.html
-code/
+
