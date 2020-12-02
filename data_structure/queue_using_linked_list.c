@@ -3,8 +3,6 @@
 #include<stdlib.h>
 struct queue
 {
-int front;
-int rear;
 int value;
 struct queue * next;
 };
@@ -32,26 +30,22 @@ int is_empty(struct queue * head)
 		return 0;
 }
 
-struct queue *  enqueue(struct queue * head)
-{
+void enqueue(struct queue * front, struct queue * rear)
+{  
 if (!is_full(head))
 {	printf("please enter the value of item \n");
 		int a;
 	scanf("%d",&a);
-	if (head->rear==-1)
+	struct queue *n=(struct queue *)malloc(sizeof(struct queue));
+	n->next =NULL;
+	n->value=a;
+	if (front == NULL)
 	{
-	head->front++;
-	head->rear++;
-	head->next =NULL;
-	head->value=a;
+	front = rear =NULL;
 	}
-	else
-	{
-	head->rear++;
-	head->next=(struct queue *)malloc(sizeof(struct queue));
-	head=head->next;
-	head->value=a;
-	}
+	else 
+	{rear->next=n;}
+}
 }
 printf("\n");
 }
@@ -80,8 +74,6 @@ struct queue * head=(struct queue *)malloc(sizeof(struct queue));
 struct queue * front =NULL;
 struct queue * rear=NULL;
 struct queue * ptr=head;
-head->front=-1;
-head->rear= -1;
 head->next=NULL;
 while (1)
 {
