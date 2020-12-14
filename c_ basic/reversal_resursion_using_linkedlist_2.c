@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#include<string.h>
 static int b=0;
 int c=1;
 struct linkedlist
@@ -46,16 +46,17 @@ printf("\n");
 
 struct linkedlist * reversal(struct linkedlist * ptr)
 {
-struct linkedlist * head=ptr;
+
+struct linkedlist * head;
 head->next=NULL;
-
-while(ptr!= NULL);
+while(ptr ->next != NULL)
 {
+head=ptr;
 ptr=ptr->next;
-ptr->next=ptr;
+ptr->next=head;
 }
+printf("HELLO \n");
 traversing(ptr);
-
 }
 
 
