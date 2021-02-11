@@ -46,7 +46,14 @@ printf("\n");
 
 struct linkedlist * reversal(struct linkedlist * ptr)
 {
+while(ptr!= NULL)
+{
+ptr=ptr->next;
+reversal(ptr);
+}
+printf("%d \t",ptr->data);
 
+/*
 struct linkedlist * head;
 head->next=NULL;
 while(ptr ->next != NULL)
@@ -57,6 +64,7 @@ ptr->next=head;
 }
 printf("HELLO \n");
 traversing(ptr);
+*/
 }
 
 
