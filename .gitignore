@@ -1,7 +1,6 @@
 /mylogs.log
 *.log
 *.swp
-*.html
 ignore/
 program
 *.class
