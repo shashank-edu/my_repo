@@ -1,0 +1,194 @@
+body {
+  color: #40514E;
+  margin: 0;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  /* here we saying the browser first run verdana font and if this font doesn't install
+thus then i will treat sans-serif as the default font and run this*/
+  /* by default we have serif family */
+  /* their are some web safe font also their which mostly run on all browser
+as no font is 100%  safe */
+}
+
+h1 {
+  font-size: 5.625rem;
+  /* em font size is inherited that means if parent have 2 em font and if we specify
+  1 em for child so child font size become 1+2 = 3em and this will exactly same with the percentages
+  but it will not be happen in px as its is a static sizes*/
+  /* to tackle this problem we have rem instead of em i.e it ignore the front what ever be in the root */
+  /*  font-size: 562.5%; */
+  /* 16px =100% = 1em */
+  /* em = width of a M */
+  /* font-size: 90px;
+  in this case if someone changes its font size in the browser then gaving value as
+  px; it will be absolute value thus not changes with change in the font size thus
+we make it as % so 100% = 16px , so 90px=(100/16)*90=562.5% */
+  margin: 50px auto 0 auto;
+  font-family: 'Sacramento', cursive;
+  color: #66BFBF;
+  /*  width: 10%; */
+  /* margin: 0 auto 0 auto; */
+  /*  margin: 0 auto; */
+  /* the other way of centering the element by margin */
+  /* in margin their is the value called auto which allign the element in center either
+vertically and horizontally  this is all have to be done when we edit/change the width*/
+  /* top , right , bottom , left  i.e is a clock wise direction */
+  /* top and bottom , right and left */
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  color: #66BFBF;
+  padding-bottom: 10px;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: #11999E;
+}
+
+/*div {
+  background-color: #E4F9F5;
+}
+*/
+a {
+  color: #11999E;
+  margin: 10px 20px;
+      font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+a:hover{
+  color: #EAF6F6;
+}
+hr{
+    width: 5%;
+    border-style: dotted;
+    border-width: 8px;
+    border-bottom: 0;
+color: #EAF6F6;
+margin: 100px auto;
+}
+
+p{
+line-height: 2;
+
+}
+
+/************************CLASS SELECTOR*********************************/
+.top-container {
+  position: relative;
+  padding-top: 100px;
+background-color: #E4F9F5;
+}
+
+.middle-container {
+  margin: 100px 0;
+}
+
+.bottom-container {
+    background-color: #66BFBF;
+    padding: 50px 0 20px;
+}
+
+.pro {
+  text-decoration: underline;
+}
+
+/* top-cloud and bottom-cloud both are child of top-container so if taken relative position
+both position is relative change to top-container*/
+.bottom-cloud {
+  position: absolute;
+  left: 250px;
+  bottom: 300px;
+
+}
+
+.top-cloud {
+  position: absolute;
+  right: 300px;
+  top: 40px;
+}
+.font_weight{
+  font-weight: normal;
+}
+.skill-row{
+  margin: 100px auto;
+  width: 50%;
+text-align: left;
+
+}
+
+.computer_img{
+  width: 25%;
+  float: left;
+  margin-right: 30px;
+}
+.chillies_img{
+  width: 25%;
+float: right;
+margin-left: 30px;
+}
+.text{
+  color: #40514E;
+  width: 30%;
+  margin: 0 auto;
+}
+.copy_right{
+  color: #EAF6F6;
+  font-size: 0.75rem;
+  padding: 20px 0;
+}
+
+.contact_message{
+  width:40%;
+  margin: 40px auto 60px;
+}
+.btn {
+  background: #11cdd4;
+  background-image: -webkit-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -moz-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -ms-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -o-linear-gradient(top, #11cdd4, #11999e);
+  background-image: linear-gradient(to bottom, #11cdd4, #11999e);
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #30e3cb;
+  background-image: -webkit-linear-gradient(top, #30e3cb, #2bc4ad);
+  background-image: -moz-linear-gradient(top, #30e3cb, #2bc4ad);
+  background-image: -ms-linear-gradient(top, #30e3cb, #2bc4ad);
+  background-image: -o-linear-gradient(top, #30e3cb, #2bc4ad);
+  background-image: linear-gradient(to bottom, #30e3cb, #2bc4ad);
+  text-decoration: none;
+}
+
+.image{
+  height: 280px;
+  width:250px;
+}
+/* only use float when really really necessary and use only when we have to rap the text
+around any block */
+/*
+.clear_rap_around_left{
+  clear: left;
+}
+.clear_rap_around_right{
+  clear: right;
+}
+*/
+/* clear is something like antifloat it prevent it to float */
+
+/****************************ID SELECTOR**************************/
+
+#color_text{
+  color: #11999E;
+}

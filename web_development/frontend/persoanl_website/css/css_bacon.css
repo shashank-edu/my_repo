@@ -1,0 +1,31 @@
+/*************************TAG SELECTOR**************************/
+h1 {
+  color: red;
+  font-size: 500%;
+}
+
+/* (comment style is css) */
+img:hover{
+  background-color: #66BFBF;
+}
+
+/* :hover we can do is when ever the cursor paced over that element it
+changes the property which define in :hover  that is a sudo class*/ 
+/*************************CLASS SELECTOR**************************/
+.bacon {
+  background-color: red;
+}
+
+.boccoli {
+  background-color: green;
+}
+
+.circular {
+  border-radius: 100%;
+}
+
+/* we select the class by putting (.) in front of class name*/
+/*************************ID SELECTOR**************************/
+#heading {
+  color: purple;
+}
