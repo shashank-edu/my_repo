@@ -16,7 +16,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Double version;
+    private int version;
     private String productId;
     private String name;
     private int price;
@@ -28,10 +28,10 @@ public class Product {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Double getVersion() {
+    public int getVersion() {
         return version;
     }
-    public void setVersion(Double version) {
+    public void setVersion(int version) {
         this.version = version;
     }
     public String getProductId() {
@@ -53,7 +53,7 @@ public class Product {
         this.price = price;
     }
 
-    public Product(Integer id, Double version, String productId, String name, int price) {
+    public Product(Integer id, int version, String productId, String name, int price) {
         this.id = id;
         this.version = version;
         this.productId = productId;

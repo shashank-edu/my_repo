@@ -1,5 +1,7 @@
 package com.springboot.webapp.controller;
 
+import javax.transaction.Transactional;
+
 import com.springboot.webapp.entities.Product;
 
 import org.hibernate.HibernateException;
@@ -13,16 +15,23 @@ public class AddEntities {
         SessionFactory sf= new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Product.class).buildSessionFactory();
         Session session =sf.getCurrentSession();
 
-        // ACID -> Atomicity , Consistency , Isolation , Durability
+        // ACID 
         
         try{
             // creating new instance
             Product product = new Product();
 
-            product.setName("magiee");
+            product.setName("maggi");
             product.setPrice(10);
-            product.setProductId("DM#4322");
-            product.setVersion(2.2);
+            product.setProductId("M#4322");
+            product.setVersion(2);
+
+            Product product1 = new Product();
+
+            product1.setName("KitKat");
+            product1.setPrice(20);
+            product1.setProductId("KT#4542");
+            product1.setVersion(1);
 
             // start a transaction
             session.beginTransaction();
@@ -30,6 +39,7 @@ public class AddEntities {
 
             // save the student object
             session.save(product);
+            session.save(product1);
 
              // commit transaction
             session.getTransaction().commit();
