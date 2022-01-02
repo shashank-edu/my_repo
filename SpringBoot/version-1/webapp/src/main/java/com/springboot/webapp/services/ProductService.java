@@ -54,5 +54,9 @@ public class ProductService {
 
     }
 
+    public Object checkData(int id) {
+        return Prepo.findById(id).orElse(null);
+    }
+
 
 }
