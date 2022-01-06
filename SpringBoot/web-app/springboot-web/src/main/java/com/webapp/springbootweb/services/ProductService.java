@@ -58,8 +58,8 @@ public class ProductService {
         if (existingProduct != null){
             existingProduct.setName(product.getName());
             existingProduct.setPrice(product.getPrice());
-            existingProduct.setProductId(product.getProductId());
-            existingProduct.setbatchNo(product.getbatchNo());
+            existingProduct.setBatchNo(product.getBatchNo());
+            existingProduct.setQuantity(product.getQuantity());
             return Prepo.save(existingProduct);
         }else{
             return null;
@@ -75,8 +75,8 @@ public class ProductService {
             // Product existingProduct =Prepo.findById(id).orElse(null);
             existingProduct.setName(product.getName());
             existingProduct.setPrice(product.getPrice());
-            existingProduct.setProductId(product.getProductId());
-            existingProduct.setbatchNo(product.getbatchNo());
+            existingProduct.setBatchNo(product.getBatchNo());
+            existingProduct.setQuantity(product.getQuantity());
             return Prepo.save(existingProduct);
         }else{
             return null;

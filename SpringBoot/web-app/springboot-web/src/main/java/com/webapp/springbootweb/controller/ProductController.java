@@ -2,6 +2,7 @@ package com.webapp.springbootweb.controller;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.fasterxml.jackson.databind.annotation.JsonAppend.Prop;
 import com.webapp.springbootweb.ExceptionalHandeling.ProductErrorResponse;
 import com.webapp.springbootweb.ExceptionalHandeling.ProductNotFoundException;
@@ -9,8 +10,11 @@ import com.webapp.springbootweb.entities.Product;
 import com.webapp.springbootweb.services.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,19 +22,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+// @RestController
+@Controller
 public class ProductController {
 
-    
-    // private List<Product> theProducts;
 
     @Autowired
     private ProductService service;
 
-    // post method
+    
 
+    // post method
     @PostMapping("/product")
     // @ResponseStatus(code =  HttpStatus.CREATED)
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
@@ -46,24 +51,25 @@ public class ProductController {
 
 
     // get method
+    // @ResponseBody
     @GetMapping("/product")
-    public List<Product> findAllProducts()  {
-        return service.getProducts();
+    public String findAllProducts(Model model)  {
+        // return service.getProducts();
+        List<Product> Listproduct = service.getProducts();
+        model.addAttribute("Listproduct", Listproduct);
+        return "products";
     }
 
     @GetMapping("/product/{id}")
-    public ResponseEntity<Product>findProductById(@PathVariable int id) {
+    public String findProductById(@PathVariable int id, Model model) {
 
-        // check the student id against the list size
-
-        // if ((id >= theProducts.size()) || (id < 0) ){
-        //     throw new ProductNotFoundException("Student id Not Found - "+id);
-        // }
         if (service.CheckAvalability(id) == null ){
             throw new ProductNotFoundException("Student id Not Found - "+id);
         }
         Product prop= service.getProductsById(id);  
-        return new ResponseEntity<Product>(prop, prop!=null ? HttpStatus.FOUND : HttpStatus.NOT_FOUND);
+        // return new ResponseEntity<Product>(prop, prop!=null ? HttpStatus.FOUND : HttpStatus.NOT_FOUND);
+        model.addAttribute("Listproduct", prop);
+        return "products";
     }
     
     // add an exception handler using @ExceptionalHandler
@@ -118,6 +124,12 @@ public class ProductController {
         }
         
         // return service.deleteProduct(id);
+    }
+
+    @GetMapping("/product/new")
+    public String ShowAddNewPage(Model model) {
+        model.addAttribute("product", new Product());
+        return "Addnew";
     }
 
     

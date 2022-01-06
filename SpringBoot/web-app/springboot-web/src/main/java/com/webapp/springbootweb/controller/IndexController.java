@@ -2,13 +2,19 @@ package com.webapp.springbootweb.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+// import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 // @ResponseBody
 public class IndexController {
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public String index(){
-        return "index.html";
+        return "index";
+    }
+
+    @RequestMapping("/")
+    public String home(){
+        System.out.println("main controller");
+        return "home";
     }
 }

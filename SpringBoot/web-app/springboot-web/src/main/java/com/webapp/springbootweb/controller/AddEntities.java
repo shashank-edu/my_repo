@@ -19,18 +19,22 @@ public class AddEntities {
         try{
             // creating new instance
             Product product = new Product();
-
-            product.setName("maggi");
+            // product.setId(3);
+            product.setName("maggie");
             product.setPrice(10);
-            product.setProductId("M#4322");
-            product.setbatchNo("#21");;
+            // product.setquantity(20);;
+            // product.setbatchNo("#21");
+            product.setBatchNo("#21");
+            product.setQuantity(32);
 
             Product product1 = new Product();
-
-            product1.setName("KitKat");
+            // product.setId(5);
+            product1.setName("Big KitKat");
             product1.setPrice(20);
-            product1.setProductId("KT#4542");
-            product1.setbatchNo("#53");;
+            // product1.setquantity(200);
+            // product1.setbatchNo("#53");]
+            product1.setBatchNo("#41");
+            product1.setQuantity(54);
 
             // start a transaction
             session.beginTransaction();

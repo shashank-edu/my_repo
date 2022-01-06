@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Products</title>
+</head>
+
+<body>
+    <div>
+        <h1>Manage Products</h1>
+    </div>
+<div>
+    <a th:href="@{/product/new}">Add New Product</a>
+</div>
+    <div>
+        <table>
+            <thead>
+
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Batch No.</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <th:block th:each=" obj: ${Listproduct}">
+                    <tr>
+                        <td>[[${obj.id}]]</td>
+                        <td>[[${obj.name}]]</td>
+                        <td>[[${obj.quantity}]]</td>
+                        <td>[[${obj.price}]]</td>
+                        <td>[[${obj.batchNo}]]</td>
+                        <td>
+                            <a th:href="@{'/product/edit/'+{product.id}}">Edit</a>
+                            <a th:href="@{'/product/delete/'+{product.id}}">Delete</a>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

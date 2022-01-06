@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Product</title>
+</head>
+
+<body>
+    <div>
+        <h2>Add New Product</h2>
+    </div>
+
+    <form th:action="@{/product/save}" method="post" th:object="${product}" style="max-width: 500px; margin: 0 auto;">
+        <div>
+            <div>
+                <label for="">Name:</label>
+                <div>
+                    <input type="text" th:field="*{name}" required minlength="3" maxlength="45">
+                </div>
+            </div>
+
+            <div>
+                <label for="">Price:</label>
+                <div>
+                    <input type="text" th:field="*{price}" required minlength="2" pattern="[0-9]*">
+                </div>
+            </div>
+
+            <div>
+                <label for="">Quantity:</label>
+                <div>
+                    <input type="text" th:field="*{quantity}" required  maxlength="3" 
+                    pattern="[0-9]*">
+                </div>
+            </div>
+
+            <div>
+                <label for="">BatchNo:</label>
+                <div>
+                    <input type="text" th:field="*{batchNo}" minlength="3" maxlength="10"
+                    pattern="[#][0-9]*">
+                </div>
+            </div>
+
+            <div>
+                <button type="submit">Save</button>
+                <button type="button" th:onclick="cancelForm()">Cancel</button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" th:src="@{/myscript.js}"></script>
+<!-- <script>
+    function cancelForm(){
+        window.location= "[[@{/product}]]";
+    }
+</script> -->
+</body>
+
+</html>
