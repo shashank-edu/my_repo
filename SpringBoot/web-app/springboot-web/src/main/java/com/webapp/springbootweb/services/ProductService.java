@@ -2,6 +2,7 @@ package com.webapp.springbootweb.services;
 
 import java.util.List;
 
+import com.webapp.springbootweb.ExceptionalHandeling.ProductNotFoundException;
 import com.webapp.springbootweb.entities.Product;
 import com.webapp.springbootweb.repositories.ProductRepository;
 
@@ -17,12 +18,13 @@ public class ProductService {
     // post method
 
     public Product saveProduct(Product prod){
-        Product proCheck = Prepo.findById(prod.getId()).orElse(null);
-        if(proCheck != null){
-            return  null;
-        }else{
-            return Prepo.save(prod);
-        }
+        return Prepo.save(prod);
+        // Product proCheck = Prepo.findById(prod.getId()).orElse(null);
+        // if(proCheck != null){
+        //     return  Prepo.save(prod);
+        // }else{
+        //     return null;
+        // }
         // return Prepo.save(prod);
         // return Prepo.findById(prod.getId()).orElse(null);
         
@@ -40,9 +42,13 @@ public class ProductService {
     }
 
     public Product getProductsById(int id){
-        return Prepo.findById(id).orElse(null);
-     
+        Product product= Prepo.findById(id).orElse(null);
+        if(product != null){
+            return product;
+        }
+        throw new ProductNotFoundException("Could not find any Product with ID "+id);
     }
+    
     
     // public Product getProductsByName(String name){
     //     return Prepo.findbyName(name);
@@ -84,9 +90,13 @@ public class ProductService {
         
     }
 
-    public Product CheckAvalability(int id) {
-        return Prepo.findById(id).orElse(null);
-    }
+    // public Product CheckAvalability(int id) {
+    //     Product product= Prepo.findById(id).orElse(null);
+    //     if(product != null){
+    //         return product;
+    //     }
+    //     throw new ProductNotFoundException("Could not find any Product with ID "+id);
+    // }
 
 
 }
