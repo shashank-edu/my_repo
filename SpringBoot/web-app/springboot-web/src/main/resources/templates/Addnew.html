@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.com">
-
+    
 <head>
     <meta charset="UTF-8">
     <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" href="/addnewPage.css">
 </head>
 
 <body>
     <div>
-        <h2>[[${pageTitle}]]</h2>
-        <h2><a href="/logout" type="button">Logout</a></h2>
+        <h2 id="main-heading">[[${pageTitle}]]</h2>
+        <button class="logout-button" type="button" th:onclick="logout()">Logout</button>
     </div>
 
     <form th:action="@{/product/save}" method="post" th:object="${product}" style="max-width: 500px; margin: 0 auto;">
@@ -53,8 +54,8 @@
             </div>
 
             <div>
-                <button type="submit">Save</button>
-                <button type="button" th:onclick="cancelForm()">Cancel</button>
+                <button id="submit-button" type="submit">Save</button>
+                <button id="cancel-button" type="button" th:onclick="cancelForm()">Cancel</button>
             </div>
         </div>
     </form>

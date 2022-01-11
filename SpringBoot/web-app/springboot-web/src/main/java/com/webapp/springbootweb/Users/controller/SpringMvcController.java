@@ -55,8 +55,8 @@ public class SpringMvcController {
         User user = new User();
         user.setEmail("Admin@gmail.com");
         user.setPassword(this.bCryptPasswordEncoder.encode("password"));
-        user.setRole("ADMIN");
-        user.setUsername("admin");
+        user.setRole("ROLE_ADMIN");
+        user.setUsername("admin1");
         user.setUserId(2);
         userRepository.save(user);
         return user;

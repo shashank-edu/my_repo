@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome page</title>
-    <link rel="stylesheet" href="sample.css">
+    <link rel="stylesheet" href="home-page.css">
 </head>
 <body>
     <h1 class="main-heading">Welcome to CRUD Web-Application</h1>
-    <!-- <img id="backgroud-image" src="background1.png" alt="background1.png" width="100%"> -->
-    <h2><a href="/product">Manage Products</a></h2>
-    <h2 class="logout-button"><a href="/logout" type="button">Logout</a></h2>
+    <button type="button" id="main-button" th:onclick="openMainPage()">Manage Products</button>
+    <button class="logout-button" type="button" th:onclick="logout()">Logout</button>
+    
+    <img class="second-image" th:src="background.jpg" >
+    <script type="text/javascript" th:src="@{/myscript.js}"></script>
 </body>
 </html>
