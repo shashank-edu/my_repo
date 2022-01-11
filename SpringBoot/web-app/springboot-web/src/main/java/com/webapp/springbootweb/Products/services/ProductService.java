@@ -1,10 +1,10 @@
-package com.webapp.springbootweb.services;
+package com.webapp.springbootweb.Products.services;
 
 import java.util.List;
 
-import com.webapp.springbootweb.ExceptionalHandeling.ProductNotFoundException;
-import com.webapp.springbootweb.entities.Product;
-import com.webapp.springbootweb.repositories.ProductRepository;
+import com.webapp.springbootweb.Products.ExceptionalHandeling.ProductNotFoundException;
+import com.webapp.springbootweb.Products.entities.Product;
+import com.webapp.springbootweb.Products.repositories.ProductRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,6 @@ public class ProductService {
     private ProductRepository Prepo;
 
     // post method
-
     public Product saveProduct(Product prod){
         return Prepo.save(prod);
         // Product proCheck = Prepo.findById(prod.getId()).orElse(null);

@@ -1,7 +1,7 @@
-package com.webapp.springbootweb.controller;
+package com.webapp.springbootweb.Products.controller;
 
 
-import com.webapp.springbootweb.entities.Product;
+import com.webapp.springbootweb.Products.entities.Product;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

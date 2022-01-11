@@ -1,4 +1,4 @@
-package com.webapp.springbootweb.ExceptionalHandeling;
+package com.webapp.springbootweb.Products.ExceptionalHandeling;
 
 public class ProductNotFoundException extends RuntimeException {
 

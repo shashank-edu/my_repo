@@ -1,14 +1,10 @@
-package com.webapp.springbootweb.entities;
+package com.webapp.springbootweb.Products.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Columns;
-
-
 
 
 @Entity
@@ -24,7 +20,7 @@ public class Product {
     @Column(nullable = false, length = 3)
     private int Quantity;
 
-    @Column(nullable = false,unique = true, length = 45)
+    @Column(nullable = false, unique = true, length = 45)
     private String name;
 
     @Column(nullable = false)
