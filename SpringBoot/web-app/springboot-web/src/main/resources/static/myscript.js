@@ -3,7 +3,6 @@ function cancelForm(){
     window.location= "/product";
 }
 
-
 function openMainPage(){
     
     window.location="/product";
@@ -15,3 +14,13 @@ function logout(){
 function addProduct(){
     window.location="/product/new";
 }
+
+function userDetails(){
+    window.location="/user/list";
+}
+
+
+function addUser(){
+    window.location="/user/new";
+}
+

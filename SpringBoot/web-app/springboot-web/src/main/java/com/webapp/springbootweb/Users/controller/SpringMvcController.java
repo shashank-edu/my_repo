@@ -1,21 +1,28 @@
 package com.webapp.springbootweb.Users.controller;
 
-import java.util.List;
-
+import com.webapp.springbootweb.Products.ExceptionalHandeling.ProductNotFoundException;
+import com.webapp.springbootweb.Products.entities.Product;
 import com.webapp.springbootweb.Users.Repository.UserRepository;
 import com.webapp.springbootweb.Users.Service.UserService;
 import com.webapp.springbootweb.Users.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-@RestController // this means what ever the data we return is return in the form of json
-@RequestMapping("/users")
+@Controller // this means what ever the data we return is return in the form of json
+@RequestMapping("/user")
 // @Controller
 public class SpringMvcController {
 
@@ -29,11 +36,11 @@ public class SpringMvcController {
     private UserRepository userRepository;
 
  
-    // all users
-    @GetMapping("/")
-    public List<User> getAllUsers() {
-        return this.userService.getUsers();
-    }
+    // // all users
+    // @GetMapping("/")
+    // public List<User> getAllUsers() {
+    //     return this.userService.getUsers();
+    // }
 
     // return single user
     // @PreAuthorize("hasRole('ADMIN')")
@@ -60,5 +67,44 @@ public class SpringMvcController {
         user.setUserId(2);
         userRepository.save(user);
         return user;
+    }
+
+    @PostMapping("/save")
+    public String addUser(User user, RedirectAttributes redirectAttribute) {
+        userService.addUser(user);
+        redirectAttribute.addFlashAttribute("message", "The User has been saved successfully.");
+        return "redirect:list";
+    }
+
+    @GetMapping("/new")
+    public String ShowAddNewPage(Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("pageTitle", "Add new user");
+        return "AddUser";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String findProductById(@PathVariable int id, Model model, RedirectAttributes redirectAttribute) {
+        try {
+            User user = userService.getUser(id);
+            model.addAttribute("user", user);
+            model.addAttribute("pageTitle", "Edit User (ID: " + id + ")");
+            return "AddUser";
+        } catch (ProductNotFoundException e) {
+            redirectAttribute.addFlashAttribute("message", e.getMessage());
+            return "redirect:/list";
+        }
+
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProductById(@PathVariable int id, RedirectAttributes redirectAttribute) {
+        try {
+            userService.deleteUser(id);
+            redirectAttribute.addFlashAttribute("message", "User ID- " + id + " Successfully deleted!");
+        } catch (ProductNotFoundException e) {
+            redirectAttribute.addFlashAttribute("message", e.getMessage());
+        }
+        return "redirect:/user/list";
     }
 }

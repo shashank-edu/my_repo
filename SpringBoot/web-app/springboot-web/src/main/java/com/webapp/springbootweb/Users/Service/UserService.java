@@ -23,7 +23,7 @@ public class UserService {
         User user = new User();
         user.setEmail(user1.getEmail());
         user.setPassword(this.bCryptPasswordEncoder.encode(user1.getPassword()));
-        user.setRole(user1.getRole());
+        user.setRole("ROLE_"+user1.getRole().toUpperCase());
         user.setUsername(user1.getUsername());
         userRepository.save(user);
         return user1;
@@ -63,13 +63,13 @@ public class UserService {
     }
 
     // post method
-    public User saveUser(User user) {
-        return userRepository.save(user);
-    }
+    // public User saveUser(User user) {
+    //     return userRepository.save(user);
+    // }
 
-    public List<User> saveUsers(List<User> user) {
-        return userRepository.saveAll(user);
+    // public List<User> saveUsers(List<User> user) {
+    //     return userRepository.saveAll(user);
 
-    }
+    // }
 
 }

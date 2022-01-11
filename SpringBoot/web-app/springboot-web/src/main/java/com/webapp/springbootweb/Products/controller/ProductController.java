@@ -140,7 +140,7 @@ public class ProductController {
     public String addProduct(Product product, RedirectAttributes redirectAttribute) {
         service.saveProduct(product);
         System.out.println(product.getPrice());
-        redirectAttribute.addFlashAttribute("message", "the user has been saved successfully.");
+        redirectAttribute.addFlashAttribute("message", "The Product has been saved successfully.");
         return "redirect:/product";
     }
 
