@@ -9,6 +9,8 @@ import com.webapp.springbootweb.Products.ExceptionalHandeling.ProductNotFoundExc
 import com.webapp.springbootweb.Products.entities.Product;
 import com.webapp.springbootweb.Products.services.ProductService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,22 +32,9 @@ public class ProductController {
 
     @Autowired
     private ProductService service;
-
-    // post method
-    // @PostMapping("/product")
-    // // @ResponseStatus(code = HttpStatus.CREATED)
-    // public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-    // Product pr = service.saveProduct(product);
-    // return new ResponseEntity<Product>(pr, pr!=null ? HttpStatus.CREATED :
-    // HttpStatus.CONFLICT);
-    // }
-
-    // @PostMapping("/product")
-    // public List<Product> addProducts(@RequestBody List<Product> products) {
-    // return service.saveProducts(products);
-    // }
-
-    // get method
+   
+    // // spring-jcl -> spring common logging bridge
+    // Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     // @ResponseBody
     @GetMapping("/product")
@@ -69,18 +58,7 @@ public class ProductController {
         }
 
     }
-    // if (service.CheckAvalability(id) == null ){
-    // redirectAttribute.addFlashAttribute("message", "product not found");
-    // throw new ProductNotFoundException("Student id Not Found - "+id);
-    // }
-    // Product prop= service.getProductsById(id);
-    // // return new ResponseEntity<Product>(prop, prop!=null ? HttpStatus.FOUND :
-    // HttpStatus.NOT_FOUND);
-    // model.addAttribute("product", prop);
-    // model.addAttribute("pageTitle", "Edit Product (ID: "+id+")");
-    // // return "redirect:/product";
-    // return "Addnew";
-    // }
+
 
     // add an exception handler using @ExceptionalHandler
 
@@ -97,10 +75,6 @@ public class ProductController {
         return "redirect:/product";
     }
 
-    // @GetMapping("/product/{name}")
-    // public Product findProductByName(@PathVariable String name) {
-    // return service.getProductsByName(name);
-    // }
 
     // updateProduct
     // @PreAuthorize("hasRole('ADMIN')")
