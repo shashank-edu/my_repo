@@ -26,41 +26,26 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // if client is not browser , CDRF is a attack and spring security help us to
                                   // protect it
                 .authorizeRequests()
-                // .antMatchers("/home","/login","/register").permitAll() // in there page it
-                // doesn't ask for username and password
-                // .antMatchers("/public/**").permitAll() // those start from /public/* login
-                // w/o authentication
                 .antMatchers("/product").permitAll()
-                .antMatchers("/product/**").hasRole("ADMIN")
+                .antMatchers("/product/new","/product/edit/**","/product/save","/product/delete/**").hasRole("MODERATOR")
+                // .antMatchers("/product/**/**").hasRole("MODERATOR")
                 .antMatchers("/signin").permitAll()
+                .antMatchers("/user/**","/product/**/**").hasRole("ADMIN")
                 .anyRequest()   
                 .authenticated()
                 .and()
-                // .httpBasic();
+                .exceptionHandling().accessDeniedPage("/403")
+                .and()
                 .formLogin();
-                // .loginPage("/signin")
-    //             .loginProcessingUrl("/dologin")
-    //             .defaultSuccessUrl("/product");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // auth.inMemoryAuthentication().withUser("shashank").password("pass").roles("NORMAL");
-        // auth.inMemoryAuthentication().withUser("normal").password(this.passwordEncoder().encode("password")).roles("NORMAL");
         // auth.inMemoryAuthentication().withUser("admin").password(this.passwordEncoder().encode("password")).roles("ADMIN");
         auth.userDetailsService(customUserDetailService).passwordEncoder(passwordEncoder());
     }
-
-    // Role - high level overview -> Normal : READ
-    // Authority - permission -> READ
-    // ADMIN -> READ,WRITE, UPDATE
-
-    // if we have to put some password in a plain text thena we have to create a
-    // bean
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-        // return NoOpPasswordEncoder.getInstance();
         return new BCryptPasswordEncoder(10); // its encode the pass having strenght =10
     }
 }

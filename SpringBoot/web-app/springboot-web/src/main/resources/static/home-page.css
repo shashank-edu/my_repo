@@ -64,3 +64,19 @@ body {
   /* margin-top: 40px; */
   
 }
+
+.UserButton{
+  font-family: "Lucida Console", "Courier New", monospace;
+  position: relative;
+  /* margin-right: 30px; */
+  border-style: groove;
+  border-radius: 10px;
+  /* margin-left: 90%; */
+  color: green;
+  width: 10%;
+  height:30px;
+  /* margin-top: 30px; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

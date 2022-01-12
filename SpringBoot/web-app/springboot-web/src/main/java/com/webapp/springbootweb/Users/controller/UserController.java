@@ -25,30 +25,4 @@ public class UserController {
         model.addAttribute("Listproduct", Listproduct);
         return "UserDetails";
     }
-    // @Autowired
-    // private UserService userService;
-
-
-    // @GetMapping("/")
-    // public List<User> ShowUsers(){
-    //     return userService.getUsers();
-    // }
-    
-    
-    // @GetMapping("/user")
-    // public User firstmethod() {
-    //     System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>> running first method");
-    //     User user = new User();
-    //     user.setEmail("hello@gmail.com");
-    //     user.setPassword("password");
-    //     user.setRole("ADMIN");
-    //     user.setUsername("username");
-    //     userService.addUser(user);
-    //     return user;
-    // }
-
-    // @PostMapping("/user")
-    // public User secondMethod(@RequestBody User user ){
-    //     return userService.addUser(user);
-    // }
 }

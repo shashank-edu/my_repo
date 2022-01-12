@@ -11,7 +11,7 @@ body {
 
   table{
     border-collapse: collapse;
-    width: 50%; 
+    width: auto; 
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -67,4 +67,12 @@ body {
     height: 30px;
 
 }
-
+#homeButton{
+  position: relative;
+  /* margin-right: 30px; */
+  border-style: groove;
+  border-radius: 10px;
+  /* margin-left: 90%; */
+  color: green;
+  
+}

@@ -48,10 +48,6 @@ public class ProductService {
         throw new ProductNotFoundException("Could not find any Product with ID "+id);
     }
     
-    
-    // public Product getProductsByName(String name){
-    //     return Prepo.findbyName(name);
-    // }
 
     public String deleteProduct(Integer id){
         Prepo.deleteById(id);

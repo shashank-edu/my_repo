@@ -24,3 +24,6 @@ function addUser(){
     window.location="/user/new";
 }
 
+function home(){
+    window.location="/";
+}

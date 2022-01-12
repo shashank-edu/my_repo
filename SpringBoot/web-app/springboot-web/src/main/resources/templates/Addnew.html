@@ -11,6 +11,7 @@
     <div>
         <h2 id="main-heading">[[${pageTitle}]]</h2>
         <button class="logout-button" type="button" th:onclick="logout()">Logout</button>
+        <button id="homeButton" type="button" onclick="home()">Home</button>
     </div>
 
     <form th:action="@{/product/save}" method="post" th:object="${product}" style="max-width: 500px; margin: 0 auto;">

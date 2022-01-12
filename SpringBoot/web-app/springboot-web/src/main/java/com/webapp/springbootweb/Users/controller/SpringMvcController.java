@@ -21,9 +21,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-@Controller // this means what ever the data we return is return in the form of json
+@Controller 
 @RequestMapping("/user")
-// @Controller
 public class SpringMvcController {
 
     @Autowired
@@ -35,26 +34,12 @@ public class SpringMvcController {
     @Autowired
     private UserRepository userRepository;
 
- 
-    // // all users
-    // @GetMapping("/")
-    // public List<User> getAllUsers() {
-    //     return this.userService.getUsers();
-    // }
-
-    // return single user
-    // @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
     public User getUser(@PathVariable("id") int id){
 
         return this.userService.getUser(id);
     }
 
-
-    // @PostMapping("/")
-    // public User add(@RequestBody User user) {
-    //     return this.userService.addUser(user);
-    // }
 
 
     @GetMapping("/adduser")

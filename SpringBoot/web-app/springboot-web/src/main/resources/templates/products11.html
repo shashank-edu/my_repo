@@ -13,7 +13,7 @@
     </div>
 <div>
     <!-- <a id="add-product" th:href="@{/product/new}">Add New Product</a> -->
-    <button id="add-product" type="button" th:onclick="addProduct()">Add New Product</button>
+    <button id="add-product" type="button" th:onclick="addProduct()">Add New User</button>
     <button class="logout-button" type="button" th:onclick="logout()">Logout</button>
     <button id="homeButton" type="button" onclick="home()">Home</button>
 </div>
@@ -21,6 +21,7 @@
     <div id="message-text" th:if="${message}">
         [[${message}]]
     </div>
+   
 </container>
 
     <div >
@@ -37,17 +38,19 @@
             </thead>
 
             <tbody>
+                    
                 <th:block th:each=" obj: ${Listproduct}">
                     <tr>
-                        <td>[[${obj.id}]]</td>
+                        <td>[[${obj.id}]]</td>  
                         <td>[[${obj.name}]]</td>
                         <td>[[${obj.quantity}]]</td>
                         <td>[[${obj.price}]]</td>
                         <td>[[${obj.batchNo}]]</td>
                         
-                           <td>
+                        <td>
+                            
                             <a id="edit-link" th:href="@{'/product/edit/' + ${obj.id}}">Edit</a>
-                            <a id="delete-link" th:href="@{'/product/delete/' + ${obj.id}}">Delete</a>
+                            <a id="delete-link" th:href="@{'/product/delete/' + ${obj.id}">Delete</a>
                         </td>
                     </tr>
                 </th:block>

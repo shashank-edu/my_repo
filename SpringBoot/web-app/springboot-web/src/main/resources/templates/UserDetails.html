@@ -9,17 +9,19 @@
 
 <body>
     <div>
-        <h1 id="main-heading">Manage User/h1>
+        <h1 id="main-heading">Manage User</h1>
     </div>
 <div>
     <!-- <a id="add-product" th:href="@{/product/new}">Add New Product</a> -->
     <button id="add-product" type="button" th:onclick="addUser()">Add New User</button>
     <button class="logout-button" type="button" th:onclick="logout()">Logout</button>
+    <button id="homeButton" type="button" onclick="home()">Home</button>
 </div>
 <container>
     <div id="message-text" th:if="${message}">
         [[${message}]]
     </div>
+   
 </container>
 
     <div >
