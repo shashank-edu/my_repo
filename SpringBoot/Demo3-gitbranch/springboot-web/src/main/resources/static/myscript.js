@@ -27,3 +27,4 @@ function addUser(){
 function home(){
     window.location="/";
 }
+
