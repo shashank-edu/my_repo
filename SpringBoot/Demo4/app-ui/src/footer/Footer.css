@@ -2,7 +2,9 @@
 
 * {
   font-family: Open Sans;
+  
 }
+
 
 section {
   width: 100%;
@@ -195,4 +197,12 @@ section {
 		margin-left: 0;
 	}
 
+}
+
+#footer-div{
+	position:absolute;
+	bottom:0;
+	width:100%;
+	height:60px;   /* Height of the footer */
+	background:#6cf;
 }

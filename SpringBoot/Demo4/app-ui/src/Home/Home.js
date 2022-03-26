@@ -8,16 +8,13 @@ import Product from "../Products/Products";
 import UserDetails from "../UserDetails/UserDetails";
 
 const Home = () => {
-    return (
-        <div>
-        <Body/>
-        <NewUserForm/>
-        <NewProduct/>
-        <Product/>
-        <UserDetails/>
+  return (
+    <div>
+      <Header />
+      <Body />
+      <Footer />
     </div>
-
-    );
-}
+  );
+};
 
 export default Home;

@@ -1,10 +1,12 @@
 import React from "react";
-
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
 const UserDetails = (prop) =>{
     const message = "this is best App";
 
     return (
         <div>
+            <div><Header /></div>
             <div>
         <h1 id="main-heading">Manage User</h1>
     </div>
@@ -51,6 +53,7 @@ const UserDetails = (prop) =>{
             </tbody>
         </table>
     </div>
+    <div><Footer /></div>
         </div>
     );
 }
