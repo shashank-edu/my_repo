@@ -1,0 +1,30 @@
+import axios from 'axios';
+import authHeader from './auth-header';
+
+const API_URL = 'http://localhost:9110/';
+
+class UserService {
+
+  getHomePage() {
+    console.log("inside GetHomePage");
+
+    return axios.get(API_URL, { headers: authHeader() });
+  }
+
+  getProducts() {
+    return axios.get(API_URL + '/product', { headers: authHeader() });
+  }
+
+  getUsers() {
+    return axios.get(API_URL + 'user/list', { headers: authHeader() });
+  }
+
+  getAdminBoard() {
+    return axios.get(API_URL + 'admin', { headers: authHeader() });
+  }
+}
+
+export default new UserService();
+
+
+// Now we define a service for accessing data in user.service.js:
