@@ -5,7 +5,7 @@ import "./App.css";
 
 import AuthService from "./services/auth.service";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
@@ -13,9 +13,11 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
+import Footer from "./components/Footer.component";
 
 // import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
+import Products from "./components/Products.component";
 
 class App extends Component {
   constructor(props) {
@@ -31,6 +33,7 @@ class App extends Component {
     const user = AuthService.getCurrentUser();
 
     if (user) {
+      console.log(user);
       this.setState({
         currentUser: user,
       });
@@ -57,18 +60,18 @@ class App extends Component {
   render() {
     const { currentUser } = this.state;
     const notify = () =>
-    toast.success("🦄 Wow so easy!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  
+      toast.success("🦄 Wow so easy!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
     return (
-      <div>
+      <>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
             ApanaMart
@@ -81,11 +84,19 @@ class App extends Component {
             </li>
 
             {currentUser && (
-              <li className="nav-item">
+              <>
+               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
                   User
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to={"/product"} className="nav-link">
+                  Products
+                </Link>
+              </li>
+              </>
+
             )}
           </div>
 
@@ -120,19 +131,22 @@ class App extends Component {
         </nav>
 
         <div className="container mt-3">
-          <Switch>  
-            <Route exact path={"/home"} component={Home} />
+          <Switch>
             <Route exact path={["/", "/login"]} component={Login} />
+            (currentUser ?
+            <Route exact path={"/home"} component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={BoardUser} />
-            <Route path="/mod" component={BoardModerator} />
-            <Route path="/admin" component={BoardAdmin} />
-          </Switch> 
+            <Route path="/product" component={Products} />
+            <Route path="/addproduct" component={BoardAdmin} />
+            : <Route exact path={"*"} component={Login} />)
+          </Switch>
         </div>
         <ToastContainer />
         {/*<AuthVerify logOut={this.logOut}/> */}
-      </div>
+        {currentUser ? <Footer /> : true}
+      </>
     );
   }
 }

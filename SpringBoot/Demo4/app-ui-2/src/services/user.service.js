@@ -12,7 +12,7 @@ class UserService {
   }
 
   getProducts() {
-    return axios.get(API_URL + '/product', { headers: authHeader() });
+    return axios.get(API_URL + 'product', { headers: authHeader() });
   }
 
   getUsers() {
