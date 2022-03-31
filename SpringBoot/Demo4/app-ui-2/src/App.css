@@ -33,3 +33,23 @@ label {
   border-radius: 50%;
 }
 
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table{
+  border-collapse: collapse;
+  width: auto; 
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td,th{
+  padding: 15px;
+  
+}
+
+td:hover {background-color: rgb(247, 115, 38);}  
+tr:nth-child(even) {background-color: #f2f2f2;}

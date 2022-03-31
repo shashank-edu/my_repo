@@ -48,16 +48,22 @@ export default class Home extends Component {
       }
     );
   }
+
+
   render() {
     const { content } = this.state.content;
     
     console.log("inside render", AuthService.getCurrentUser());
+    
+    const CorouselImageStyle={
+      marginBottom: '10%'
+    }
     return (
     
       <>
         {/* style={{width : '100%', height : '40%'  }} */}
       {AuthService.getCurrentUser() ? (
-          <Carousel className="Corousel-image">
+          <Carousel className="Corousel-image" style={CorouselImageStyle}>
           <div >
             <img src="https://picsum.photos/1000/650"/>
             <p className="legend">Legend 1</p>
@@ -74,10 +80,10 @@ export default class Home extends Component {
           <img src="https://picsum.photos/1002/650"/>
             <p className="legend">Legend 3</p>
           </a>
-
-           
+          
         
         </Carousel>
+        
       ): (
         this.props.history.push("/")   
       )}

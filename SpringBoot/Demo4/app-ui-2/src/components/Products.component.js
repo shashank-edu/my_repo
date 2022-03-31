@@ -2,11 +2,19 @@ import React from "react";
 import authService from "../services/auth.service";
 import userService from "../services/user.service";
 import { useEffect, useState } from "react";
-import Product from "./Product";
+import List from "./List";
 import { useHistory } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 let UserDetail = authService.getCurrentUser();
 
+const addButtonStyle = {
+  position: 'absolute',
+  height: 'auto',
+  /* right: 10%; */
+  width: '10%',
+  left: '2%'
+}
 const Products = () => {
   let history = useHistory();
 
@@ -21,12 +29,12 @@ const Products = () => {
     // { id: 4, name: "pen", price: 12, quantity: 3, batchNo: "#54" },
   ]);
   console.log(products);
+
   useEffect(() => {
     userService.getProducts().then((result) =>
       setProduct(
             result.data
       )
-      
     );
     console.log(products);
   }, []);
@@ -35,8 +43,9 @@ const Products = () => {
     history.push("/addproduct");
   };
 
+
   return (
-    <div>
+    <>
       <div>
         <h1 id="main-heading" style={{ textAlign: "center" }}>
           Manage Products
@@ -49,9 +58,9 @@ const Products = () => {
         <br />
         {UserDetail.role[0].authority == "ROLE_ADMIN" ||
         UserDetail.role[0].authority == "ROLE_MODERATOR" ? (
-          <button id="add-product" type="button" onClick={addProduct}>
+          <Button variant="primary" style={addButtonStyle} id="add-product" type="button" onClick={addProduct}>
             Add New Product
-          </button>
+          </Button>
         ) : (
           true
         )}
@@ -73,11 +82,11 @@ const Products = () => {
           </thead>
 
           {products.length > 0
-            ? products.map((item) => <Product key={item.id} products={item} /> )
+            ? products.map((item) => <List key={item.id} products={item} /> )
             : "No Products"}
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

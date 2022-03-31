@@ -6,7 +6,7 @@ const API_URL = 'http://localhost:9110/';
 class UserService {
 
   getHomePage() {
-    console.log("inside GetHomePage");
+
 
     return axios.get(API_URL, { headers: authHeader() });
   }
@@ -16,6 +16,7 @@ class UserService {
   }
 
   getUsers() {
+    console.log("inside GetUserPage");
     return axios.get(API_URL + 'user/list', { headers: authHeader() });
   }
 

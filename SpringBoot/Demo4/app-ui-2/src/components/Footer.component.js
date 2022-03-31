@@ -2,24 +2,27 @@ import React from "react";
 
 
 const footer = {
-  position: 'relative',
+  position: 'absolute',
   left: 0,
-  bottom: 0,
+  bottom: '-100px',
   width: "100%",
   height:"60px",
   color: "white",
-  textAlign: 'center'
+  textAlign: 'center',
+  backgroundColor: "#ECEFF1"
 }
 
 const Footer = () => {
     return (
         <>
+        
         {/* <!-- Remove the container if you want to extend the Footer to full width. --> */}
-<div className="container my-5 " style={footer}>
+<div className="container my-5 " >
+
   {/* <!-- Footer --> */}
   <footer
           className="text-center text-lg-start text-dark"
-          style={{backgroundColor: "#ECEFF1"}}
+          style={footer}
           >
     {/* <!-- Section: Social media --> */}
     <section
