@@ -18,6 +18,7 @@ import Footer from "./components/Footer.component";
 import EventBus from "./common/EventBus";
 import Products from "./components/Products.component";
 import Button from 'react-bootstrap/Button';
+import EntityForm from "./components/EntityForm";
 
 class App extends Component {
   constructor(props) {
@@ -140,7 +141,7 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={User} />
             <Route path="/product" component={Products} />
-            <Route path="/addproduct" component={BoardAdmin} />
+            <Route path="/addproduct" component={EntityForm} />
             <Route path="/adduser" component={BoardAdmin} />
             : <Route exact path={"*"} component={Login} />)
           </Switch>
