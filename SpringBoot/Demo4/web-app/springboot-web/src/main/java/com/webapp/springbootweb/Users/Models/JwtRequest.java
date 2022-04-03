@@ -1,5 +1,6 @@
 package com.webapp.springbootweb.Users.Models;
 
+
 public class JwtRequest {
     String username;
     String password;

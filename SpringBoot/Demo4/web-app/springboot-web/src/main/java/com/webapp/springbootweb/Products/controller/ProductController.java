@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +24,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 // @RestController
 @Controller
+@ResponseBody
 @Transactional
+@CrossOrigin(origins = "http://localhost:3000")
 public class ProductController {
 
     @Autowired
@@ -36,26 +40,31 @@ public class ProductController {
     // // spring-jcl -> spring common logging bridge
     // Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-    // @ResponseBody
+    
     @GetMapping("/product")
-    public String findAllProducts(Model model) {
+    public List<Product> findAllProducts(Model model) {
         // return service.getProducts();
         List<Product> Listproduct = service.getProducts();
         model.addAttribute("Listproduct", Listproduct);
-        return "products";
+        return Listproduct;
     }
 
     @GetMapping("/product/edit/{id}")
-    public String findProductById(@PathVariable int id, Model model, RedirectAttributes redirectAttribute) {
-        try {
-            Product product = service.getProductsById(id);
-            model.addAttribute("product", product);
-            model.addAttribute("pageTitle", "Edit Product (ID: " + id + ")");
-            return "Addnew";
-        }catch (ProductNotFoundException e) {
-            redirectAttribute.addFlashAttribute("message", e.getMessage());
-            return "redirect:/product";
-        }
+    public Product findProductById(@PathVariable int id, Model model, RedirectAttributes redirectAttribute) {
+        Product product = service.getProductsById(id);
+        model.addAttribute("product", product);
+        model.addAttribute("pageTitle", "Edit Product (ID: " + id + ")");
+        return product;
+        
+        // try {
+        //     Product product = service.getProductsById(id);
+        //     model.addAttribute("product", product);
+        //     model.addAttribute("pageTitle", "Edit Product (ID: " + id + ")");
+        //     return "Addnew";
+        // }catch (ProductNotFoundException e) {
+        //     redirectAttribute.addFlashAttribute("message", e.getMessage());
+        //     return "redirect:/product";
+        // }
 
     }
 
@@ -84,9 +93,10 @@ public class ProductController {
 
     // updateProductbyId
     @PutMapping("/product/edit/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody Product product) {
+    public String updateProduct(@PathVariable int id, @RequestBody Product product) {
         Product prop = service.updateProductbyId(product, id);
-        return new ResponseEntity<Product>(prop, prop != null ? HttpStatus.ACCEPTED : HttpStatus.NOT_FOUND);
+        // return new ResponseEntity<Product>(prop, prop != null ? HttpStatus.ACCEPTED : HttpStatus.NOT_FOUND);
+        return "Successfully Update";
     }
 
     @DeleteMapping("/product/{id}")
@@ -109,11 +119,12 @@ public class ProductController {
     }
 
     @PostMapping("/product/save")
-    public String addProduct(Product product, RedirectAttributes redirectAttribute) {
+    
+    public String addProduct(@RequestBody  Product product, RedirectAttributes redirectAttribute) {
         service.saveProduct(product);
         System.out.println(product.getPrice());
         redirectAttribute.addFlashAttribute("message", "The Product has been saved successfully.");
-        return "redirect:/product";
+        return "The Product has been saved successfully.";
     }
 
     // @PutMapping("/product/edit/{id}")

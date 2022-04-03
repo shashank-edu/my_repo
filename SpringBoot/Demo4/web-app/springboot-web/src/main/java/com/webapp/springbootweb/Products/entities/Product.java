@@ -32,8 +32,6 @@ public class Product {
     public void setId(Integer id) {
         this.id = id;
 
-
-
     }
     public String getName() {
         return name;
@@ -67,7 +65,7 @@ public class Product {
     public Product(Integer id, String batchNo, int quantity, String name, int price) {
         this.id = id;
         this.batchNo = batchNo;
-        Quantity = quantity;
+        this.Quantity = quantity;
         this.name = name;
         this.price = price;
     }

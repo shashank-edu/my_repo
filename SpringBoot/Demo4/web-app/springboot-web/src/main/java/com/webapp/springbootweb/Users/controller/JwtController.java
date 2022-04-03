@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +24,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
+// import com.webapp.springbootweb.Users.Models.CustomUserDetails;
+import org.springframework.security.core.userdetails.UserDetails;
 @RestController
 public class JwtController {
 
@@ -56,9 +58,9 @@ public class JwtController {
         String token = jwtUtil.generateToken(userDetails);
         System.out.println("JWT " + token);
 
-        // {"token":"value"}
+        // {"token":"value"}    
 
-        return ResponseEntity.ok(new JwtResponse(token));
+        return ResponseEntity.ok(new JwtResponse(token,jwtRequest.getUsername(),userDetails.getAuthorities()));
     }
 
 
