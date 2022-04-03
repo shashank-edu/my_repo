@@ -19,7 +19,12 @@ import EventBus from "./common/EventBus";
 import Products from "./components/Products.component";
 import Button from 'react-bootstrap/Button';
 import EntityForm from "./components/EntityForm";
+import NotFound from "./components/NotFound";
+import EditProduct from "./components/EditProduct";
+import authService from "./services/auth.service";
 
+
+let UserDetail = authService.getCurrentUser();
 class App extends Component {
   constructor(props) {
     super(props);
@@ -86,11 +91,13 @@ class App extends Component {
 
             {currentUser && (
               <>
-               <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
-                </Link>
-              </li>
+              {UserDetail.role[0].authority == "ROLE_ADMIN" ? 
+              <li className="nav-item">
+              <Link to={"/user"} className="nav-link">
+                User
+              </Link>
+            </li> : <div></div>}
+               
               <li className="nav-item">
                 <Link to={"/product"} className="nav-link">
                   Products
@@ -139,10 +146,12 @@ class App extends Component {
             <Route exact path={"/home"} component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
-            <Route path="/user" component={User} />
-            <Route path="/product" component={Products} />
-            <Route path="/addproduct" component={EntityForm} />
-            <Route path="/adduser" component={BoardAdmin} />
+            <Route exact  path="/user" component={User} />
+            <Route exact  path="/product" component={Products} />
+            <Route exact  path="/addproduct" component={EntityForm} />
+            <Route exact  path="/adduser" component={BoardAdmin} />
+            <Route exact  path="/editProduct/:id" component={EditProduct} />
+            <Route  component={NotFound} />
             : <Route exact path={"*"} component={Login} />)
           </Switch>
         </div>

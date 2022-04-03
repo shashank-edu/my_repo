@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
+import EntityForm from "./EntityForm";
+import { useHistory } from "react-router-dom";
+
+let ExportButtonTypeFunction='';  
 
 
-const editItem = () => {};
 
-const deleteItem = () => {};
 
 const List = ({ products, users }) => {
+  const deleteItem = () => {
+
+  };
+  let [EditTypeValue,setEditTypeValue]=useState();
+  let history = useHistory();
+  
+  const editItem = (e) => {
+      console.log(e.target.getAttribute('buttontypevalue'));
+      setEditTypeValue(e.target.getAttribute('buttontypevalue'));
+      // history.replace('/addproduct');
+      // return( <EntityForm />);
+  };
   return (
     <tbody>
       {products ? (
@@ -20,6 +34,8 @@ const List = ({ products, users }) => {
             <Button
               id="edit-link"
               onClick={editItem}
+              // onClick={}
+              buttontypevalue="product"
               variant="primary"
               style={{ marginRight: "5px" }}
             >
@@ -45,6 +61,7 @@ const List = ({ products, users }) => {
             <Button
               id="edit-link"
               onClick={editItem}
+              buttontypevalue="user"
               variant="primary"
               style={{ marginRight: "5px" }}
             >

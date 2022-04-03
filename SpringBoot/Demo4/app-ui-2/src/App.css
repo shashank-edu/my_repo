@@ -53,3 +53,30 @@ td,th{
 
 td:hover {background-color: rgb(247, 115, 38);}  
 tr:nth-child(even) {background-color: #f2f2f2;}
+/* 
+.not-found{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+
+} */
+
+
+.not-found{
+  position: relative;
+ 
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+
+}

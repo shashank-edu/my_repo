@@ -14,6 +14,10 @@ class UserService {
   getProducts() {
     return axios.get(API_URL + 'product', { headers: authHeader() });
   }
+  getProductById(event) {
+    
+    return axios.get(API_URL + `product/edit/${event.id}`, { headers: authHeader() });
+  }
 
   getUsers() {
     console.log("inside GetUserPage");
@@ -22,6 +26,11 @@ class UserService {
 
   getAdminBoard() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
+  }
+
+  DeleteProductbyId(event){
+    console.log(event);
+    return axios.delete(API_URL + `product/${event}`, { headers: authHeader() });
   }
 }
 

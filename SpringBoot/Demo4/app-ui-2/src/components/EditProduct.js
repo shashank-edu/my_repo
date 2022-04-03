@@ -62,11 +62,11 @@ const vbatchNo = (value) => {
 
 
 
-const EntityForm = (event) => {
+const EditProduct = (event) => {
   // console.log(e);
 
   let history = useHistory();
-  const [Product, setProduct] = useState();
+  const [Product, setProduct] = useState([]);
   const [ProductName, setProductName] = useState();
   const [quantity, setquantity] = useState();
   const [price, setprice] = useState();
@@ -75,6 +75,27 @@ const EntityForm = (event) => {
   const [message, setMessage] = useState();
   const [checkButton, setcheckButton] = useState();
   const [formValidation, setformValidation] = useState();
+
+const id = useParams();
+
+const load = (event) => {
+setProductName(event.name);
+setquantity(event.quantity);
+setprice(event.price);
+setbatchNo(event.batchNo);
+} 
+
+useEffect(() => {
+    userService.getProductById(id).then((result) => {setProduct(result.data);  load(result.data);} );
+    // load(result.data);
+  }, []);
+  
+// console.log(Product);
+// console.log(Product.name);
+// useEffect((e) => {
+ 
+//     load(Product);
+// },[])
 
 
   // console.log("ProductId",event.ProductId);
@@ -89,14 +110,12 @@ const EntityForm = (event) => {
   // }else{
   //   document.title = "Add  Product";
   // }
-
+ 
   useEffect(() => {
     document.title = "Add  Product";
+    
   }, []);
 
-
-
- 
   const onChangeProductName = (e) => {
     setProductName(e.target.value);
   };
@@ -113,7 +132,7 @@ const EntityForm = (event) => {
     setbatchNo(e.target.value);
   };
 
-  const handleRegister = (e) => {
+  const handleSave = (e) => {
     e.preventDefault();
 
     // this.setState({
@@ -126,7 +145,7 @@ const EntityForm = (event) => {
     formValidation.validateAll();
 
     if (checkButton.context._errors.length === 0) {
-      AuthService.registerProduct(ProductName, quantity, price, batchNo).then(
+      AuthService.saveProduct(id,ProductName, quantity, price, batchNo).then(
         (response) => {
           setSuccess(true);
           setMessage(response.data);
@@ -160,7 +179,7 @@ const EntityForm = (event) => {
           /> */}
 
         <Form
-          onSubmit={handleRegister}
+          onSubmit={handleSave}
           ref={(c) => {
             setformValidation(c);
           }}
@@ -245,4 +264,4 @@ const EntityForm = (event) => {
   );
 };
 
-export default EntityForm;
+export default EditProduct;

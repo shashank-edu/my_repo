@@ -62,19 +62,19 @@ const addUser = () => {
           Manage Users
         </h1>
       </div>
-      <div>
+     
         {/* <!-- <a id="add-product" href="@{/product/new}">Add New Product</a> --> */}
         <br />
         <br />
         <br />
-        {UserDetail.role[0].authority == "ROLE_ADMIN"   ? (
+        {UserDetail.role[0].authority == "ROLE_ADMIN" ? (
           <Button variant="primary" style={addButtonStyle}  id="add-user" type="button" onClick={addUser}>
             Add New User
           </Button>
         ) : (
           true
         )}
-      </div>
+      
 
       <div>
         <table
